@@ -1,0 +1,27 @@
+<br>
+<%= link_to "All tracks from album: #{@track.album.title}", album_url(@track.album) %>
+
+<h1><%= @track.album.band.name %> : <%= @track.album.title %> : <%= @track.name %> </h1>
+<%= link_to "edit", edit_track_url(@track) %>
+<%= button_to "Delete Track", track_url(@track), method: :delete %>
+
+
+regular<input type="radio" name="track[bonus]" value="regular" <%= @track.bonus == 'regular' ? "checked" : "diabled" %>>
+bonus<input type="radio" name="track[bonus]" value="bonus" <%= @track.bonus == 'bonus' ? "checked" : "disabled" %>>
+<br><br>
+
+  <!-- <textarea id="Lyrics" name="track[lyrics]" cols="30" rows="10"> <%= @track.lyrics %> </textarea> -->
+  <% unless @track.lyrics.nil? %>
+    <label for="Lyrics">Lyrics
+      <pre><%= ugly_lyrics(@track.lyrics) %></pre>
+    </label>
+  <% end %>
+<br><br>
+
+<%= render "notes/form" %>
+<br>
+
+<% @track.notes.each do |note| %>
+  <%= render "notes/note", note: note, track: @track %>
+  <br>
+<% end %>

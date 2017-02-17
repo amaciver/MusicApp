@@ -1,0 +1,15 @@
+<br>
+<%= link_to "Back to band", band_url(@album.band) %>
+
+<h1><%= @album.title %></h1>
+
+<form class="" action="<%= album_url(@album) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="Album Title">Album Title</label>
+  <input id="Album Title" type="text" name="album[title]" value="<%= @album.title %>">
+
+  <input type="submit" name="" value="Edit Album">
+
+</form>

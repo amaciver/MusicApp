@@ -1,0 +1,23 @@
+<br>
+<%= link_to "Back to track", track_url(@track) %>
+<h1><%= @track.name %></h1>
+<form class="" action="<%= track_url(@track) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="PATCH">
+
+  <label for="Track Name">Track Name</label>
+  <input id="Track Name" type="text" name="track[name]" value="<%= @track.name %>">
+  <br>
+
+  <label for="track[bonus]">regular/bonus</label>
+  <input type="radio" name="track[bonus]" value="regular" <%= @track.bonus == 'regular' ? "checked" : "" %>>
+  <input type="radio" name="track[bonus]" value="bonus" <%= @track.bonus == 'bonus' ? "checked" : "" %>>
+  <br>
+
+  <label>Lyrics
+    <textarea name="track[lyrics]" cols="30" rows="10"> <%= @track.lyrics %> </textarea>
+  </label>
+
+  <input type="submit" name="" value="Edit Track">
+
+</form>
